@@ -1,0 +1,67 @@
+#HTML 문법 정리
+
+안녕하세요.<br /> - 줄 넘김 - 단독 태그
+<p> - 한줄 띄어쓰기
+반가워요
+
+<h1> 제목 </h1>
+
+
+<html> 
+이 사이에 모든 것 들어가기
+</html>
+
+<head>
+
+</head>
+
+<title> 
+웹 페이지 제목 
+</title>
+
+
+
+<body> 
+<center>
+글, 가운데로 정렬
+</center>
+
+</body>
+
+번호 없는 목록
+<ul>
+<li>목록1</li>
+<li>목록2</li>
+<li>목록3</li>
+</ul>
+
+
+번호 있는 목록
+<ol>
+<li>목록1</li>
+<li>목록2</li>
+<li>목록3</li>
+</ol>
+
+
+설명있는 목록
+<dl>
+<dt>목록1</dt>
+<dd>설명</dd>
+<dt>목록2</dt>
+<dd>설명</dd>
+<dt>목록3</dt>
+<dd>설명</dd>
+</dl>
+
+이미지 태그
+<img src="경로">
+
+하이퍼링크 태크
+<a href="경로" target="_blank"(새 탭으로 열기)> 버튼 </a>
+
+오디오 태그
+<audio src="경로" autoplay controls>
+
+</audio>
+크롬브라우저 - mp3, wav, ogg 다 가능
