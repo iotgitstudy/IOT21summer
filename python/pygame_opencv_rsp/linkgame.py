@@ -68,7 +68,7 @@ weapon_width = weapon_size[0]
 weapons = []
 weapon_speed = 10
 
-max_num_hands = 1
+max_num_hands = 2
 gesture = {
     0:'fist', 1:'one', 2:'two', 3:'three', 4:'four', 5:'five',
     6:'six', 7:'rock', 8:'spiderman', 9:'yeah', 10:'ok',
@@ -96,7 +96,7 @@ cap = cv2.VideoCapture(0)
 
 running = True #게임이 진행중인가?
 while running and cap.isOpened():
-    dt = clock.tick(100) # 게임화면의 초당 프레임 수를 설정
+    dt = clock.tick(7) # 게임화면의 초당 프레임 수를 설정
     
     ret, img = cap.read()
     if not ret:
@@ -133,7 +133,7 @@ while running and cap.isOpened():
             data = np.array([angle], dtype=np.float32)
             ret, results, neighbours, dist = knn.findNearest(data, 3)
             idx = int(results[0][0])
-                
+            print(ret)
             
 
         # Draw gesture result
@@ -161,6 +161,8 @@ while running and cap.isOpened():
             elif event.key == pygame.K_RIGHT: #오른쪽
                 character_to_x += character_speed
             elif event.key == pygame.K_SPACE: #무기 발사
+                if len(weapons) > 5:
+                    break
                 weapon_x_pos = character_x_pos + (character_width / 2) - (weapon_width / 2)
                 weapon_y_pos = character_y_pos
                 weapons.append([weapon_x_pos, weapon_y_pos])
@@ -170,10 +172,20 @@ while running and cap.isOpened():
         if event.type == pygame.KEYUP: #방향키를 떼면 멈춤
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 character_to_x = 0
-    if ret == 0.0:
-        weapon_x_pos = character_x_pos + (character_width / 2) - (weapon_width / 2)
-        weapon_y_pos = character_y_pos
-        weapons.append([weapon_x_pos, weapon_y_pos])    
+    if ret == 5.0:
+        character_to_x += character_speed
+    if ret == 9.0:
+        character_to_x -= character_speed
+    if ret ==10.0:
+        character_to_x = 0
+
+    if ret == 0.0 and len(weapons) < 6:
+        if len(weapons) > 1 and weapons[-1][1] >140:
+            pass
+        else:
+            weapon_x_pos = character_x_pos + (character_width / 2) - (weapon_width / 2)
+            weapon_y_pos = character_y_pos
+            weapons.append([weapon_x_pos, weapon_y_pos])    
 
     # 3. 게임 캐릭터 위치 정의 
     character_x_pos += character_to_x
