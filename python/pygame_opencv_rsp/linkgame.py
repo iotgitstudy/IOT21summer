@@ -38,7 +38,7 @@ clock = pygame.time.Clock()
 # 1. 사용자 게임 초기화 (배경화면, 게임 이미지, 좌표, 속도, 폰트 등)
 current_path = os.path.dirname(__file__) # 현재 파일의 위치 반환
 image_path = os.path.join(current_path, "images") # images 폴더 위치 반환
-
+data_path = os.path.join(current_path, "data") # data 폴더 위치 반환
 #배경 만들기
 background = pygame.image.load(os.path.join(image_path, "background.png"))
 
@@ -84,7 +84,8 @@ hands = mp_hands.Hands(
     min_tracking_confidence=0.5)
 
 # Gesture recognition model
-file = np.genfromtxt('data/gesture_train.csv', delimiter=',')
+
+file = np.genfromtxt(os.path.join(data_path, 'gesture_train.csv'), delimiter=',')
 angle = file[:,:-1].astype(np.float32)
 label = file[:, -1].astype(np.float32)
 knn = cv2.ml.KNearest_create()
