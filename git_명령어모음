@@ -1,0 +1,18 @@
+### git 명령어 모음
+
+@@규칙@@
+
+1. 
+명령어 : 설명
+형식으로 작성한다.
+
+
+
+
+git init : git 환경 준비 명령어 - 빈 레포지터리 생성
+
+git fetch remote_name : remote repo에서 내용을 가져와서 참조함
+(pull = fetch + merge)
+git merge --allow-unrelated-histories repo_name/branch_name
+: 현재 repo에 다른 repo 병합하기, 독립적인 두 repo 병합시 인자 필수
+
