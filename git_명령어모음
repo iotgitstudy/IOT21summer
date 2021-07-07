@@ -94,11 +94,13 @@ $git branch -d name : branch 삭제
 
 $git checkout name : 해당 branch로 이동
 
-$git merge name : 현재 branch와 해당 branch 병합
+$git merge branch_name : 현재 branch와 해당 branch 병합
 
 $git merge -abort : merge 취소
 
- 
+$git branch -m old_branch_name new_branch_name : 브랜치 이름 변경
+
+$git push origin --delete branch_name : github 브랜치 삭제
 
 $git fetch : remote repo에서 내용을 가져와서 참조함, merge X , git diff branch origin/branch 로 확인가능
 
@@ -141,7 +143,15 @@ alias 삭제 방법
 
 $git config --unset alias.별명
 
- 
+## 서로 다른 repo 병합하기
+
+$git fetch remote_name : remote repo에서 내용을 가져와서 참조함
+(pull = fetch + merge)
+$git merge --allow-unrelated-histories repo_name/branch_name
+: 현재 repo에 다른 repo 병합하기, 독립적인 두 repo 병합시 인자 필수
+
+
+
 
 README.md - 특정 문법이 약속되어있는 확장자 markdown
 
@@ -149,10 +159,5 @@ README.md - 특정 문법이 약속되어있는 확장자 markdown
 
 https://guides.github.com/features/mastering-markdown/
 
-## 서로 다른 repo 병합하기
 
-$git fetch remote_name : remote repo에서 내용을 가져와서 참조함
-(pull = fetch + merge)
-$git merge --allow-unrelated-histories repo_name/branch_name
-: 현재 repo에 다른 repo 병합하기, 독립적인 두 repo 병합시 인자 필수
 
