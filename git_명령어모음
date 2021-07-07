@@ -9,10 +9,155 @@
 
 
 
-git init : git 환경 준비 명령어 - 빈 레포지터리 생성
+$git init : git 환경 준비 명령어 - 빈 레포지터리 생성
 
-git fetch remote_name : remote repo에서 내용을 가져와서 참조함
+git bash에서
+
+복사 : ctrl + insert
+
+붙여넣기 : shift + insert
+
+
+$git config user.name "" : 터미널에 이름 저장
+
+$git config user.email "" : 터미널에 메일 저장
+
+$git remote add origin 주소 : remote repo 등록
+
+
+(origin) : 기원이라는 뜻으로 remote repo를 뜻함 아무거나 넣어도 되나 암묵적인 규칙
+
+
+$git add . : staging area에 작업 내용 저장(곧 commit 할 것을 암시하는 장소)
+
+$git commit : commit message 창 출력하여 작성 (입력모드: i, 작성완료: esc -> :wq)
+
+$git commit -m "" : commit message 바로 입력
+
+$git commit --amend : 가장 최신 commit을 수정해서 새로운 commit으로 만듦
+
+ 
+
+$git status : git 상태 확인
+
+
+$git reset 파일이름 : staging area에서 파일 삭제 (add 삭제)
+
+$git help 명령어 : 명령어 설명 출력
+
+ 
+
+$git push  -u origin master : github 원격 저장소에 작업 내용 전송
+
+-u : -set--upstream 의 약자 
+
+ 
+
+$git push : remote repository로 밀어넣기
+
+$git pull : github 내용을 컴퓨터 디렉터리에 적용
+
+ 
+$git clone 프로젝트주소 : github 프로젝트 가져오기(바로 remote연결까지 됨)
+
+ 
+
+$git log : 과거 commit 내용 출력
+
+$git shortlog : commit id 보이지 않음
+
+$git log --pretty=oneline : commit id 보임
+
+$git show commit id : commit 변동사항 출력
+
+$git diff id id : 두 commit 간의 차이 비교
+
+ 
+## 이전 commit으로 돌아가는 법! 중요
+$git reset --option commit_id : 가르키는 commit처럼 환경 변경 (옵션 생략 시 mixed 적용) option = hard, mixed, soft
+
+ 
+
+$git tag tag_name commit_id : commit에 tag 붙이기
+
+$git tag : tag 기록 참조
+
+$git show tag_name : tag가 붙은 commit 내용 참조
+
+ 
+
+$git branch name : branch 생성
+
+$git checkout -b name : branch 생성하면서 이동
+
+$git branch -d name : branch 삭제
+
+$git checkout name : 해당 branch로 이동
+
+$git merge branch_name : 현재 branch와 해당 branch 병합
+
+$git merge -abort : merge 취소
+
+$git branch -m old_branch_name new_branch_name : 브랜치 이름 변경
+
+$git push origin --delete branch_name : github 브랜치 삭제
+
+$git fetch : remote repo에서 내용을 가져와서 참조함, merge X , git diff branch origin/branch 로 확인가능
+
+ 
+
+$git blame file_name : 해당 파일의 commit 기록 출력 누가 작성했는지 확인 가능
+
+$git revert commit_id : 해당 commit 내용 취소
+
+$git revert id_1..id_2 : id_1을 제외하고 바로 위 commit부터 id2 commit 까지 내용 취소
+
+ 
+
+$git reflog  : head가 그동안 가리켜왔던 commit들의 log 출력
+
+$git log --all --graph : commit log를 그래프로 표현
+
+$git rebase branch_name : 현재 branch의 base를 인자 branch로 설정
+
+$git stash : 현재 작업중이던 내용 stack 영역에 저장
+
+$git stash apply : stack의 내용 적용
+
+$git stash drop : stack의 내용 삭제
+
+$git stash pop  : stack의 내용 적용하면서 삭제
+
+$git cherry-pick commit_id : 다른 branch의 1개의 commit만 현재 branch에 적용
+
+
+alias (별명) 설정 : 지역 단위 (전체 적용시 --grobal 추가)
+
+$git config alias.별명 '긴 명령어'
+
+ex) git config alias.history 'log --pretty=oneline'
+
+ 
+
+alias 삭제 방법
+
+$git config --unset alias.별명
+
+## 서로 다른 repo 병합하기
+
+$git fetch remote_name : remote repo에서 내용을 가져와서 참조함
 (pull = fetch + merge)
-git merge --allow-unrelated-histories repo_name/branch_name
+$git merge --allow-unrelated-histories repo_name/branch_name
 : 현재 repo에 다른 repo 병합하기, 독립적인 두 repo 병합시 인자 필수
+
+
+
+
+README.md - 특정 문법이 약속되어있는 확장자 markdown
+
+가이드
+
+https://guides.github.com/features/mastering-markdown/
+
+
 
