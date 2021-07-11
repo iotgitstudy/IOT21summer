@@ -11,6 +11,9 @@
 
 $git init : git 환경 준비 명령어 - 빈 레포지터리 생성
 
+$rm -rf .git : git 환경 삭제
+
+
 git bash에서
 
 복사 : ctrl + insert
