@@ -1,0 +1,26 @@
+###코드업 기초 100제(Python)
+
+## 6001번
+
+print("Hello")
+
+## 6002번
+
+print("Hello World")
+
+## 6003번
+
+print("Hello")
+print("World")
+
+## 6004번
+
+print("'Hello'")
+
+-- 문자열 표현 기호 "와'
+
+## 6005번
+
+print('"Hello World"')
+
+--"출력 위해서는 '사용해야 함
