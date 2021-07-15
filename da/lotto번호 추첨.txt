@@ -1,4 +1,4 @@
-//뷰
+//뷰 <p> - 문단을 나누는 줄넘김 태그 <span> - 기능이 없고 줄넘김이 없는 태그(사용이유는 span 태그 안에 속성 추가를 위해)
 <p>
     <span class="ball_645 lrg ball1"><%= @lotto[0] %></span>
     <span class="ball_645 lrg ball1"><%= @lotto[1] %></span>
@@ -9,7 +9,7 @@
 </p>
 
 
-//컨트롤러
+//컨트롤러 - 루비 언어
 class LottoController < ApplicationController
     def index
 		@byunsu = [*1..45]
