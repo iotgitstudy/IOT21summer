@@ -123,6 +123,8 @@ $git log --all --graph : commit log를 그래프로 표현
 
 $git rebase branch_name : 현재 branch의 base를 인자 branch로 설정
 
+$git rebase -i HEAD~3 : HEAD로 부터 3번까지 commit 관리(메세지 수정 가능)
+
 $git stash : 현재 작업중이던 내용 stack 영역에 저장
 
 $git stash apply : stack의 내용 적용
