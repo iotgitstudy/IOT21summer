@@ -1,2 +1,7 @@
 안녕하세요
-push만 다시 해볼게요
+branch 실험
+git 잔디심기
+hi
+작업작업작업
+
+cherry-pick
