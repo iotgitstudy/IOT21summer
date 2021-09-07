@@ -46,10 +46,16 @@ def merge_image():
     result_img = Image.new("RGB", (max_width, total_height), (255,255,255)) # 배경 색 
     y_offset = 0 # y 위치
 
-    for img in images:
+    # for img in images:
+    #     result_img.paste(img, (0, y_offset))
+    #     y_offset += img.size[1] # height 값 만큼 더해줌
+    for idx, img in enumerate(images):
         result_img.paste(img, (0, y_offset))
-        y_offset += img.size[1] # height 값 만큼 더해줌
+        y_offset += img.size[1]
 
+        progress = (idx + 1)/len(images) * 100 # 실제 퍼센트 계산
+        p_var.set(progress)
+        progress_bar.update()
 
     dest_path = os.path.join(txt_dest_path.get(), "testphoto.jpg")
     result_img.save(dest_path)
