@@ -1,0 +1,8 @@
+파이썬 버젼, cvzone 버젼 문제로 오류 발생
+
+TypeError: create_int(): incompatible function arguments. The following argument types are supported:
+    1. (arg0: int) -> mediapipe.python._framework_bindings.packet.Packet
+
+해결 버젼 예시: 
+python 3.9.6
+cvzone 1.4.1
