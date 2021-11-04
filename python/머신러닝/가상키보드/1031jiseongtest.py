@@ -1,15 +1,21 @@
 import cv2
 from cvzone.HandTrackingModule import HandDetector
+from time import sleep
+from pynput.keyboard import Controller
+
 
 cap = cv2.VideoCapture(0)
 cap.set(3,1280)
 cap.set(4,720)
 
 detector = HandDetector(detectionCon=0.8)
-
+finalText = ''
 keys = [['Q', 'W', 'E','R','T','Y','U','I','O','P','[',']'],
        ['A','S','D','F','G','H','J','K','L',';',"'"],
        ['Z','X','C','V','B','N','M',',','.','/'] ]
+
+keyboard = Controller()
+
 def drawALL(img, buttonList):
     for button in buttonList:
 
@@ -44,10 +50,39 @@ while True:
     img = cv2.flip(img, 1) #화면 좌우 반전
 
     img = detector.findHands(img)
-    lmlist, bboxInfo = detector.findPosition(img)
+    lmList, bboxInfo = detector.findPosition(img)
     
     img = drawALL(img, buttonList)
     
+    if lmList: #손이 있는지 체크
+        for button in buttonList:
+            x, y = button.pos # 버튼 위치
+            w, h = button.size # 버튼 크기
+
+
+            if x < lmList[8][0] < x + w and y < lmList[8][1] < y + h: # 8번 인자 = 검지 손가락 끝이 버튼 범위 안에 있으면 
+                cv2.rectangle(img, button.pos, (x+w, y+h), (0, 255, 0), cv2.FILLED) # 색 변경
+                cv2.putText(img, button.text, (x+20, y+65), cv2.FONT_HERSHEY_PLAIN,
+                4, (255, 255, 255), 4)
+
+                l, _, q_ = detector.findDistance(8, 12, img, draw=False) # 검지와 중지 사이의 거리 체크
+                print(l) 
+
+                # 클릭 시
+                if l < 30:
+                    keyboard.press(button.text)
+                    cv2.rectangle(img, button.pos, (x+w, y+h), (175, 0, 175), cv2.FILLED) # 색 변경
+                    cv2.putText(img, button.text, (x+20, y+65), cv2.FONT_HERSHEY_PLAIN,
+                    4, (255, 255, 255), 4)
+                    finalText += button.text
+                    sleep(0.15)
+
+
+    cv2.rectangle(img, (50,550), (700, 450), (175, 0, 175), cv2.FILLED) # 색 변경
+    cv2.putText(img, finalText, (60, 525), cv2.FONT_HERSHEY_PLAIN,
+    5, (255, 255, 255), 5)
+
+
 
 
     cv2.imshow("image", img)
